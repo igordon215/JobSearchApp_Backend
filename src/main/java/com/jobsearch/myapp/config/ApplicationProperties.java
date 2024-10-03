@@ -2,36 +2,61 @@ package com.jobsearch.myapp.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-/**
- * Properties specific to Job Search App.
- * <p>
- * Properties are configured in the {@code application.yml} file.
- * See {@link tech.jhipster.config.JHipsterProperties} for a good example.
- */
 @ConfigurationProperties(prefix = "application", ignoreUnknownFields = false)
 public class ApplicationProperties {
 
-    private final Liquibase liquibase = new Liquibase();
+    private final ClientApp clientApp = new ClientApp();
+    private final ApiDocs apiDocs = new ApiDocs();
 
-    // jhipster-needle-application-properties-property
-
-    public Liquibase getLiquibase() {
-        return liquibase;
+    public ClientApp getClientApp() {
+        return clientApp;
     }
 
-    // jhipster-needle-application-properties-property-getter
+    public ApiDocs getApiDocs() {
+        return apiDocs;
+    }
 
-    public static class Liquibase {
+    public static class ClientApp {
 
-        private Boolean asyncStart;
+        private String name;
 
-        public Boolean getAsyncStart() {
-            return asyncStart;
+        public String getName() {
+            return name;
         }
 
-        public void setAsyncStart(Boolean asyncStart) {
-            this.asyncStart = asyncStart;
+        public void setName(String name) {
+            this.name = name;
         }
     }
-    // jhipster-needle-application-properties-property-class
+
+    public static class ApiDocs {
+
+        private String title;
+        private String description;
+        private String version;
+
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
+        }
+
+        public String getVersion() {
+            return version;
+        }
+
+        public void setVersion(String version) {
+            this.version = version;
+        }
+    }
 }
