@@ -1,6 +1,7 @@
 package com.jobsearch.myapp.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -12,27 +13,37 @@ public class JobApplication {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "company_name")
+    @NotBlank(message = "Company name is required")
+    @Size(max = 100, message = "Company name cannot exceed 100 characters")
+    @Column(name = "company_name", length = 100, nullable = false)
     private String companyName;
 
-    @Column(name = "job_title")
+    @NotBlank(message = "Job title is required")
+    @Size(max = 100, message = "Job title cannot exceed 100 characters")
+    @Column(name = "job_title", length = 100, nullable = false)
     private String jobTitle;
 
-    @Column(name = "application_method")
+    @Size(max = 50, message = "Application method cannot exceed 50 characters")
+    @Column(name = "application_method", length = 50)
     private String applicationMethod;
 
-    @Column(name = "date_applied")
+    @NotNull(message = "Date applied is required")
+    @Column(name = "date_applied", nullable = false)
     private LocalDate dateApplied;
 
+    @Size(max = 255, message = "Contact information cannot exceed 255 characters")
     @Column(name = "contact_information")
     private String contactInformation;
 
+    @Size(max = 255, message = "Follow up information cannot exceed 255 characters")
     @Column(name = "follow_up")
     private String followUp;
 
-    @Column(name = "status")
+    @Size(max = 50, message = "Status cannot exceed 50 characters")
+    @Column(name = "status", length = 50)
     private String status;
 
+    @Size(max = 255, message = "Interview dates cannot exceed 255 characters")
     @Column(name = "interview_dates")
     private String interviewDates;
 
