@@ -151,3 +151,74 @@ Desktop.ini
 ######################
 /coverage/
 /.nyc_output/
+
+######################
+# Additional entries
+######################
+# JHipster
+.jhipster/
+
+# H2 database files
+*.h2.db
+*.lock.db
+
+# Compiled files
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages
+*.7z
+*.dmg
+*.gz
+*.iso
+*.rar
+*.tar
+*.zip
+
+# Logs and databases
+*.log
+*.sqlite
+
+# OS generated files
+.DS_Store?
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Editor directories and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Application specific
+/src/main/webapp/content/css/main.css
+/src/main/webapp/app/main.ts
+/src/main/webapp/app/main.js
+/src/main/webapp/index.html
+
+# Ignore generated content
+/src/main/webapp/app/**/*.js
+/src/main/webapp/app/**/*.js.map
+
+# Ignore test reports
+/test-results/
+/coverage/
+
+# Ignore Spring Boot devtools
+.restart
+
+# Ignore application properties with sensitive information
+**/application-*.yml
+**/application-*.properties
+!**/application.yml
+!**/application.properties
+
+# Ignore Webpack build files
+/webpack/
