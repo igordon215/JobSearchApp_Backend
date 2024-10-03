@@ -44,7 +44,7 @@ management:
           - liquibase
   endpoint:
     health:
-      show-details: when_authorized
+      show-details: when-authorized
       roles: 'ROLE_ADMIN'
       probes:
         enabled: true
@@ -95,9 +95,9 @@ spring:
     name: jobSearchApp
   docker:
     compose:
-      enabled: true
-      lifecycle-management: start-only
-      file: src/main/docker/services.yml
+      enabled: false # Disabled Docker Compose support
+      # lifecycle-management: start-only
+      # file: src/main/docker/services.yml
   profiles:
     # The commented value for `active` can be replaced with valid Spring profiles to load.
     # Otherwise, it will be filled in by maven when building the JAR file
@@ -212,7 +212,8 @@ jhipster:
     contact-email:
     license: unlicensed
     license-url:
-  security:
+  security: {}
+
 # ===================================================================
 # Application specific properties
 # Add your own application properties here, see the ApplicationProperties class
@@ -222,4 +223,4 @@ jhipster:
 # https://www.jhipster.tech/common-application-properties/
 # ===================================================================
 
-# application:
+application: {}

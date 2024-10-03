@@ -3,6 +3,7 @@ package com.jobsearch.myapp.web.rest;
 import com.jobsearch.myapp.domain.JobApplication;
 import com.jobsearch.myapp.service.JobApplicationService;
 import com.jobsearch.myapp.web.rest.errors.BadRequestAlertException;
+import jakarta.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -42,7 +43,8 @@ public class JobApplicationResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/job-applications")
-    public ResponseEntity<JobApplication> createJobApplication(@RequestBody JobApplication jobApplication) throws URISyntaxException {
+    public ResponseEntity<JobApplication> createJobApplication(@Valid @RequestBody JobApplication jobApplication)
+        throws URISyntaxException {
         log.debug("REST request to save JobApplication : {}", jobApplication);
         if (jobApplication.getId() != null) {
             throw new BadRequestAlertException("A new jobApplication cannot already have an ID", ENTITY_NAME, "idexists");
@@ -64,7 +66,7 @@ public class JobApplicationResource {
     @PutMapping("/job-applications/{id}")
     public ResponseEntity<JobApplication> updateJobApplication(
         @PathVariable(value = "id", required = false) final Long id,
-        @RequestBody JobApplication jobApplication
+        @Valid @RequestBody JobApplication jobApplication
     ) throws URISyntaxException {
         log.debug("REST request to update JobApplication : {}, {}", id, jobApplication);
         if (jobApplication.getId() == null) {
@@ -92,7 +94,7 @@ public class JobApplicationResource {
     @PatchMapping(value = "/job-applications/{id}", consumes = { "application/json", "application/merge-patch+json" })
     public ResponseEntity<JobApplication> partialUpdateJobApplication(
         @PathVariable(value = "id", required = false) final Long id,
-        @RequestBody JobApplication jobApplication
+        @Valid @RequestBody JobApplication jobApplication
     ) throws URISyntaxException {
         log.debug("REST request to partial update JobApplication partially : {}, {}", id, jobApplication);
         if (jobApplication.getId() == null) {
