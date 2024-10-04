@@ -13,42 +13,45 @@ public class JobApplication {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull(message = "Date applied is required")
+    @Column(name = "date_applied", nullable = false)
+    private LocalDate dateApplied;
+
     @NotBlank(message = "Company name is required")
     @Size(max = 100, message = "Company name cannot exceed 100 characters")
     @Column(name = "company_name", length = 100, nullable = false)
     private String companyName;
 
-    @NotBlank(message = "Job title is required")
-    @Size(max = 100, message = "Job title cannot exceed 100 characters")
-    @Column(name = "job_title", length = 100, nullable = false)
-    private String jobTitle;
+    @NotBlank(message = "Position is required")
+    @Size(max = 100, message = "Position cannot exceed 100 characters")
+    @Column(name = "position", length = 100, nullable = false)
+    private String position;
 
-    @Size(max = 50, message = "Application method cannot exceed 50 characters")
-    @Column(name = "application_method", length = 50)
-    private String applicationMethod;
+    @Size(max = 50, message = "Job number cannot exceed 50 characters")
+    @Column(name = "job_number", length = 50)
+    private String jobNumber;
 
-    @NotNull(message = "Date applied is required")
-    @Column(name = "date_applied", nullable = false)
-    private LocalDate dateApplied;
+    @Size(max = 255, message = "Website cannot exceed 255 characters")
+    @Column(name = "website")
+    private String website;
 
-    @Size(max = 255, message = "Contact information cannot exceed 255 characters")
-    @Column(name = "contact_information")
-    private String contactInformation;
+    @NotNull(message = "Status is required")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", nullable = false)
+    private Status status;
 
-    @Size(max = 255, message = "Follow up information cannot exceed 255 characters")
-    @Column(name = "follow_up")
-    private String followUp;
-
-    @Size(max = 50, message = "Status cannot exceed 50 characters")
-    @Column(name = "status", length = 50)
-    private String status;
-
-    @Size(max = 255, message = "Interview dates cannot exceed 255 characters")
-    @Column(name = "interview_dates")
-    private String interviewDates;
+    @Size(max = 500, message = "Contact info and follow up cannot exceed 500 characters")
+    @Column(name = "contact_info_follow_up", length = 500)
+    private String contactInfoFollowUp;
 
     @Column(name = "notes", columnDefinition = "TEXT")
     private String notes;
+
+    public enum Status {
+        APPLIED,
+        INTERVIEW,
+        FILLED,
+    }
 
     // Getters and setters
 
@@ -60,30 +63,6 @@ public class JobApplication {
         this.id = id;
     }
 
-    public String getCompanyName() {
-        return companyName;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
-
-    public String getJobTitle() {
-        return jobTitle;
-    }
-
-    public void setJobTitle(String jobTitle) {
-        this.jobTitle = jobTitle;
-    }
-
-    public String getApplicationMethod() {
-        return applicationMethod;
-    }
-
-    public void setApplicationMethod(String applicationMethod) {
-        this.applicationMethod = applicationMethod;
-    }
-
     public LocalDate getDateApplied() {
         return dateApplied;
     }
@@ -92,36 +71,52 @@ public class JobApplication {
         this.dateApplied = dateApplied;
     }
 
-    public String getContactInformation() {
-        return contactInformation;
+    public String getCompanyName() {
+        return companyName;
     }
 
-    public void setContactInformation(String contactInformation) {
-        this.contactInformation = contactInformation;
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 
-    public String getFollowUp() {
-        return followUp;
+    public String getPosition() {
+        return position;
     }
 
-    public void setFollowUp(String followUp) {
-        this.followUp = followUp;
+    public void setPosition(String position) {
+        this.position = position;
     }
 
-    public String getStatus() {
+    public String getJobNumber() {
+        return jobNumber;
+    }
+
+    public void setJobNumber(String jobNumber) {
+        this.jobNumber = jobNumber;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
-    public String getInterviewDates() {
-        return interviewDates;
+    public String getContactInfoFollowUp() {
+        return contactInfoFollowUp;
     }
 
-    public void setInterviewDates(String interviewDates) {
-        this.interviewDates = interviewDates;
+    public void setContactInfoFollowUp(String contactInfoFollowUp) {
+        this.contactInfoFollowUp = contactInfoFollowUp;
     }
 
     public String getNotes() {
@@ -151,28 +146,24 @@ public class JobApplication {
             "JobApplication{" +
             "id=" +
             id +
+            ", dateApplied=" +
+            dateApplied +
             ", companyName='" +
             companyName +
             '\'' +
-            ", jobTitle='" +
-            jobTitle +
+            ", position='" +
+            position +
             '\'' +
-            ", applicationMethod='" +
-            applicationMethod +
+            ", jobNumber='" +
+            jobNumber +
             '\'' +
-            ", dateApplied=" +
-            dateApplied +
-            ", contactInformation='" +
-            contactInformation +
+            ", website='" +
+            website +
             '\'' +
-            ", followUp='" +
-            followUp +
-            '\'' +
-            ", status='" +
+            ", status=" +
             status +
-            '\'' +
-            ", interviewDates='" +
-            interviewDates +
+            ", contactInfoFollowUp='" +
+            contactInfoFollowUp +
             '\'' +
             ", notes='" +
             notes +

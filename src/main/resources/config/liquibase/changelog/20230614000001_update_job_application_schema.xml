@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="20230614000001" author="jhipster">
+        
+        <!-- Add new columns -->
+        <addColumn tableName="job_application">
+            <column name="job_number" type="varchar(50)"/>
+            <column name="website" type="varchar(255)"/>
+        </addColumn>
+
+        <!-- Rename job_title to position -->
+        <renameColumn tableName="job_application" oldColumnName="job_title" newColumnName="position"/>
+
+        <!-- Combine contact_information and follow_up into contact_info_follow_up -->
+        <addColumn tableName="job_application">
+            <column name="contact_info_follow_up" type="varchar(500)"/>
+        </addColumn>
+        <sql>
+            UPDATE job_application 
+            SET contact_info_follow_up = CONCAT(IFNULL(contact_information, ''), ' ', IFNULL(follow_up, ''))
+        </sql>
+        <dropColumn tableName="job_application" columnName="contact_information"/>
+        <dropColumn tableName="job_application" columnName="follow_up"/>
+
+        <!-- Remove unused columns -->
+        <dropColumn tableName="job_application" columnName="application_method"/>
+        <dropColumn tableName="job_application" columnName="interview_dates"/>
+
+        <!-- Update status column to use new enum values -->
+        <sql>
+            UPDATE job_application 
+            SET status = CASE 
+                WHEN status = 'APPLIED' THEN 'APPLIED'
+                WHEN status = 'INTERVIEWING' THEN 'INTERVIEW'
+                ELSE 'FILLED'
+            END
+        </sql>
+        <modifyDataType tableName="job_application" columnName="status" newDataType="varchar(20)"/>
+        <addNotNullConstraint tableName="job_application" columnName="status"/>
+
+    </changeSet>
+
+</databaseChangeLog>
