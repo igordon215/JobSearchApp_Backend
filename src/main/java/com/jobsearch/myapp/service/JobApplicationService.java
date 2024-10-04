@@ -32,29 +32,26 @@ public class JobApplicationService {
         return jobApplicationRepository
             .findById(jobApplication.getId())
             .map(existingJobApplication -> {
-                if (jobApplication.getCompanyName() != null) {
-                    existingJobApplication.setCompanyName(jobApplication.getCompanyName());
-                }
-                if (jobApplication.getJobTitle() != null) {
-                    existingJobApplication.setJobTitle(jobApplication.getJobTitle());
-                }
-                if (jobApplication.getApplicationMethod() != null) {
-                    existingJobApplication.setApplicationMethod(jobApplication.getApplicationMethod());
-                }
                 if (jobApplication.getDateApplied() != null) {
                     existingJobApplication.setDateApplied(jobApplication.getDateApplied());
                 }
-                if (jobApplication.getContactInformation() != null) {
-                    existingJobApplication.setContactInformation(jobApplication.getContactInformation());
+                if (jobApplication.getCompanyName() != null) {
+                    existingJobApplication.setCompanyName(jobApplication.getCompanyName());
                 }
-                if (jobApplication.getFollowUp() != null) {
-                    existingJobApplication.setFollowUp(jobApplication.getFollowUp());
+                if (jobApplication.getPosition() != null) {
+                    existingJobApplication.setPosition(jobApplication.getPosition());
+                }
+                if (jobApplication.getJobNumber() != null) {
+                    existingJobApplication.setJobNumber(jobApplication.getJobNumber());
+                }
+                if (jobApplication.getWebsite() != null) {
+                    existingJobApplication.setWebsite(jobApplication.getWebsite());
                 }
                 if (jobApplication.getStatus() != null) {
                     existingJobApplication.setStatus(jobApplication.getStatus());
                 }
-                if (jobApplication.getInterviewDates() != null) {
-                    existingJobApplication.setInterviewDates(jobApplication.getInterviewDates());
+                if (jobApplication.getContactInfoFollowUp() != null) {
+                    existingJobApplication.setContactInfoFollowUp(jobApplication.getContactInfoFollowUp());
                 }
                 if (jobApplication.getNotes() != null) {
                     existingJobApplication.setNotes(jobApplication.getNotes());
