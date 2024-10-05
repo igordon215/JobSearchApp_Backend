@@ -1,8 +1,17 @@
 # Job Application Tracking System
 
-This is a robust backend system for tracking job applications. It allows users to manage and monitor their job application process efficiently.
+This is a full-stack application for tracking job applications. It allows users to manage and monitor their job application process efficiently.
+
+## Project Structure
+
+- `job_back/`: Backend application (Spring Boot)
+  https://github.com/igordon215/JobSearchApp_Backend
+- `job_front/`: Frontend application (React)
+  https://github.com/igordon215/JobSearchApp_Frontend
 
 ## Technologies Used
+
+### Backend
 
 - Java
 - Spring Boot
@@ -14,24 +23,46 @@ This is a robust backend system for tracking job applications. It allows users t
 - Cucumber (for testing)
 - OpenAPI (for API-first development)
 
+### Frontend
+
+- React
+- TypeScript
+- npm
+
 ## Setup and Installation
+
+### Backend
 
 1. Ensure you have Java 11 or later installed.
 2. Install Node.js and npm.
 3. Install JHipster: `npm install -g generator-jhipster`
-4. Clone this repository: `git clone [repository-url]`
-5. Navigate to the project directory: `cd job_back`
-6. Run `./mvnw` (for Maven) or `./gradlew` (for Gradle) to start the application.
+4. Navigate to the backend directory: `cd job_back`
+5. Run `./mvnw` (for Maven) or `./gradlew` (for Gradle) to start the application.
+
+### Frontend
+
+1. Ensure you have Node.js (v14 or later) and npm (v6 or later) installed.
+2. Navigate to the frontend directory: `cd job_front`
+3. Install dependencies: `npm install`
+4. Start the development server: `npm start`
 
 ## Usage
 
-After starting the application, you can access the API at `http://localhost:8080/api`.
+1. Start the backend server (it will run on `http://localhost:8080`)
+2. Start the frontend development server (it will run on `http://localhost:3000`)
+3. Open your browser and navigate to `http://localhost:3000` to use the application
 
-(Note: Add more specific usage instructions once we've developed the core functionalities)
+## Features
+
+- View a list of all job applications
+- Create a new job application
+- View details of a specific job application
+- Edit an existing job application
+- Delete a job application
 
 ## API Documentation
 
-API documentation is automatically generated using OpenAPI. You can access the Swagger UI at `http://localhost:8080/swagger-ui.html` when the application is running.
+API documentation is automatically generated using OpenAPI. You can access the Swagger UI at `http://localhost:8080/swagger-ui.html` when the backend application is running.
 
 ## Database
 
@@ -40,11 +71,30 @@ API documentation is automatically generated using OpenAPI. You can access the S
 
 ## Testing
 
+### Backend
+
 This project uses Cucumber for behavior-driven development (BDD) testing. To run the tests:
 
 ```
 ./mvnw clean test
 ```
+
+### Frontend
+
+To run frontend tests:
+
+```
+npm test
+```
+
+## Troubleshooting
+
+If you encounter any issues:
+
+1. Ensure both frontend and backend servers are running.
+2. Check the browser console for any error messages.
+3. Verify that the backend server is accessible at `http://localhost:8080/api`.
+4. If you make any changes to the backend, remember to restart the backend server.
 
 ## Contributing
 
@@ -53,6 +103,8 @@ This project uses Cucumber for behavior-driven development (BDD) testing. To run
 3. Commit your changes: `git commit -am 'Add some feature'`
 4. Push to the branch: `git push origin feature/my-new-feature`
 5. Submit a pull request
+
+Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests.
 
 ## License
 
