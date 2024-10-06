@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="20230615000000-1" author="developer">
+        <createTable tableName="JOB_APPLICATION">
+            <column name="ID" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="COMPANY_NAME" type="CHARACTER VARYING(100)"/>
+            <column name="POSITION" type="CHARACTER VARYING(100)"/>
+            <column name="APPLICATION_METHOD" type="CHARACTER VARYING(50)"/>
+            <column name="DATE_APPLIED" type="DATE"/>
+            <column name="CONTACT_INFORMATION" type="CHARACTER VARYING(255)"/>
+            <column name="FOLLOW_UP" type="CHARACTER VARYING(255)"/>
+            <column name="STATUS" type="ENUM('UNAPPLIED', 'INTERVIEW', 'FILLED')"/>
+            <column name="INTERVIEW_DATES" type="CHARACTER VARYING(255)"/>
+            <column name="NOTES" type="CHARACTER VARYING"/>
+            <column name="CONTACT_INFO_FOLLOW_UP" type="CHARACTER VARYING(500)"/>
+            <column name="JOB_NUMBER" type="CHARACTER VARYING(50)"/>
+            <column name="WEBSITE" type="CHARACTER VARYING(255)"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
